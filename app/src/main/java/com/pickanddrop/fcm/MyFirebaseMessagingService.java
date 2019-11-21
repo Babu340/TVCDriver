@@ -258,13 +258,17 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 //        notificationBuilder.setSmallIcon(R.mipmap.ic_launcher);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            notificationBuilder.setSmallIcon(R.drawable.launcher_background);
+            notificationBuilder.setSmallIcon(R.drawable.loginlogo);
+//            notificationBuilder.setSmallIcon(R.drawable.launcher_background);
             Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
 
             notificationBuilder.setColor(getResources().getColor(R.color.transparent));
             notificationBuilder.setLargeIcon(bitmap);
         }else {
-            notificationBuilder.setSmallIcon(R.mipmap.ic_launcher);
+
+//            notificationBuilder.setSmallIcon(R.mipmap.ic_launcher);
+              notificationBuilder.setSmallIcon(R.drawable.loginlogo);
+
         }
 
 
