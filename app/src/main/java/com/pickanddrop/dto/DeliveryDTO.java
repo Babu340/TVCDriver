@@ -351,6 +351,19 @@ public class DeliveryDTO implements Parcelable{
         @SerializedName("avgratingdriver")
         @Expose
         private String avgratingdriver;
+        private String pickupLiftGate;
+        private String pickupDate;
+        private String pickupTime;
+        private String classGoods;
+        private String typeGoods;
+        private String noOfPallets;
+        private String productWidth;
+        private String productHeight;
+        private String productLength;
+        private String productMeasureType;
+        private String productWeight;
+        private String dropoffLiftGate;
+
 
         protected Data(Parcel in) {
             firstname = in.readString();
@@ -436,6 +449,19 @@ public class DeliveryDTO implements Parcelable{
             cancelStatus = in.readString();
             createdAt = in.readString();
             updatedAt = in.readString();
+            pickupLiftGate = in.readString();
+            pickupDate = in.readString();
+            pickupTime = in.readString();
+            classGoods = in.readString();
+            typeGoods = in.readString();
+            noOfPallets = in.readString();
+            productWidth = in.readString();
+            productHeight = in.readString();
+            productLength = in.readString();
+            productMeasureType = in.readString();
+            productWeight = in.readString();
+            dropoffLiftGate = in.readString();
+
         }
 
         public Data () {
@@ -1110,6 +1136,102 @@ public class DeliveryDTO implements Parcelable{
             this.updatedAt = updatedAt;
         }
 
+        public String getPickupLiftGate() {
+            return pickupLiftGate;
+        }
+
+        public void setPickupLiftGate(String pickupLiftGate) {
+            this.pickupLiftGate = pickupLiftGate;
+        }
+
+        public String getPickupDate() {
+            return pickupDate;
+        }
+
+        public void setPickupDate(String pickupDate) {
+            this.pickupDate = pickupDate;
+        }
+
+        public String getPickupTime() {
+            return pickupTime;
+        }
+
+        public void setPickupTime(String pickupTime) {
+            this.pickupTime = pickupTime;
+        }
+
+        public String getClassGoods() {
+            return classGoods;
+        }
+
+        public void setClassGoods(String classGoods) {
+            this.classGoods = classGoods;
+        }
+
+        public String getTypeGoods() {
+            return typeGoods;
+        }
+
+        public void setTypeGoods(String typeGoods) {
+            this.typeGoods = typeGoods;
+        }
+
+        public String getNoOfPallets() {
+            return noOfPallets;
+        }
+
+        public void setNoOfPallets(String noOfPallets) {
+            this.noOfPallets = noOfPallets;
+        }
+
+        public String getProductWidth() {
+            return productWidth;
+        }
+
+        public void setProductWidth(String productWidth) {
+            this.productWidth = productWidth;
+        }
+
+        public String getProductHeight() {
+            return productHeight;
+        }
+
+        public void setProductHeight(String productHeight) {
+            this.productHeight = productHeight;
+        }
+
+        public String getProductLength() {
+            return productLength;
+        }
+
+        public void setProductLength(String productLength) {
+            this.productLength = productLength;
+        }
+
+        public String getProductMeasureType() {
+            return productMeasureType;
+        }
+
+        public void setProductMeasureType(String productMeasureType) {
+            this.productMeasureType = productMeasureType;
+        }
+
+        public String getProductWeight() {
+            return productWeight;
+        }
+
+        public void setProductWeight(String productWeight) {
+            this.productWeight = productWeight;
+        }
+
+        public String getDropoffLiftGate() {
+            return dropoffLiftGate;
+        }
+
+        public void setDropoffLiftGate(String dropoffLiftGate) {
+            this.dropoffLiftGate = dropoffLiftGate;
+        }
+
         @Override
         public int describeContents() {
             return 0;
@@ -1199,6 +1321,19 @@ public class DeliveryDTO implements Parcelable{
             parcel.writeString(updatedAt);
             parcel.writeString(message);
             parcel.writeString(avgratingdriver);
+            parcel.writeString(pickupLiftGate);
+            parcel.writeString(pickupDate);
+            parcel.writeString(pickupTime);
+            parcel.writeString(classGoods);
+            parcel.writeString(typeGoods);
+            parcel.writeString(noOfPallets);
+            parcel.writeString(productWidth);
+            parcel.writeString(productHeight);
+            parcel.writeString(productLength);
+            parcel.writeString(productMeasureType);
+            parcel.writeString(productWeight);
+            parcel.writeString(dropoffLiftGate);
+
         }
     }
 }

@@ -354,16 +354,18 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
         }else if (socialSecurityNo == null || socialSecurityNo.equals("")) {
             utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_social_security_number), getString(R.string.ok), false);
             return false;
-        } else if (profileImage == null ) {
-            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_upload_profile), getString(R.string.ok), false);
-            return false;
-        }else if (lisenceImage == null ) {
-            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_upload_license), getString(R.string.ok), false);
-            return false;
-        }else if (insuranceImage == null ) {
-            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_upload_insurance), getString(R.string.ok), false);
-            return false;
         }
+//        else if (profileImage == null ) {
+//            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_upload_profile), getString(R.string.ok), false);
+//            return false;
+//        }else if (lisenceImage == null ) {
+//            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_upload_license), getString(R.string.ok), false);
+//            return false;
+//        }else if (insuranceImage == null ) {
+//            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_upload_insurance), getString(R.string.ok), false);
+//            return false;
+//        }
+
 //        else if (house == null || house.equals("")) {
 //            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_house_no), getString(R.string.ok), false);
 //            signUpBinding.etHome.requestFocus();
@@ -496,6 +498,7 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
 //            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_country_name), getString(R.string.ok), false);
 //            signUpBinding.etCountry.requestFocus();
 //            return false;}
+
          else if (vehicleType == null || vehicleType.equals("")) {
             utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_select_vehicle), getString(R.string.ok), false);
             return false;
@@ -505,16 +508,19 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
          }else if (socialSecurityNo == null || socialSecurityNo.equals("")) {
             utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_social_security_number), getString(R.string.ok), false);
             return false;
-         } else if (profileImage == null ) {
-            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_upload_profile), getString(R.string.ok), false);
-            return false;
-        }else if (lisenceImage == null ) {
-            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_upload_license), getString(R.string.ok), false);
-            return false;
-        }else if (insuranceImage == null ) {
-            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_upload_insurance), getString(R.string.ok), false);
-            return false;
-        }
+         }
+
+//         else if (profileImage == null ) {
+//            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_upload_profile), getString(R.string.ok), false);
+//            return false;
+//        }else if (lisenceImage == null ) {
+//            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_upload_license), getString(R.string.ok), false);
+//            return false;
+//        }else if (insuranceImage == null ) {
+//            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_upload_insurance), getString(R.string.ok), false);
+//            return false;
+//        }
+
 //        } else if (vehicleNumber == null || vehicleNumber.equals("")) {
 //            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_vehicle_number), getString(R.string.ok), false);
 //            signUpBinding.etVehicleNumber.requestFocus();
