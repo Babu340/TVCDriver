@@ -43,8 +43,8 @@ public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDelivery
         requestOptions = new RequestOptions();
         requestOptions.centerCrop();
         requestOptions.override(150, 150);
-        requestOptions.placeholder(R.drawable.user_ic);
-        requestOptions.error(R.drawable.user_ic);
+        requestOptions.placeholder(R.drawable.user);
+        requestOptions.error(R.drawable.user);
 
         requestOptions1 = new RequestOptions();
         requestOptions1.override(100, 100);
@@ -62,6 +62,7 @@ public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDelivery
 
     @Override
     public void onBindViewHolder(final CurrentDeliveryAdapter.ViewHolder viewHolder, int position) {
+
 //        viewHolder.tvDeliveryId.setText();
 //        viewHolder.tvDeliveryDate.setText();
 //        viewHolder.tvPickLoc.setText();
@@ -198,9 +199,9 @@ public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDelivery
         }
 
         if (deliveryDTOArrayList.get(position).getDeliveryType() != null) {
-            if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("2HOUR")) {
+            if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("express")) {
                 viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.two_hours));
-            } else if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("4HOUR")) {
+            } else if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("single")) {
                 viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.four_hours));
             } else {
                 viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.same_hours));
@@ -230,6 +231,7 @@ public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDelivery
 
         public ViewHolder(View view) {
             super(view);
+
             tvDeliveryId = (TextView) view.findViewById(R.id.tv_delivery_id);
             tvDeliveryDate = (TextView) view.findViewById(R.id.tv_delivery_date);
             tvPickLoc = (TextView) view.findViewById(R.id.tv_pickup_location);
@@ -244,6 +246,7 @@ public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDelivery
             tvPrice = (TextView) view.findViewById(R.id.tv_price);
             viewHours = (View) view.findViewById(R.id.view_hours);
             ratingBar = (RatingBar) view.findViewById(R.id.ratingBar);
+
         }
     }
 

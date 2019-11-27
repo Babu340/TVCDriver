@@ -377,8 +377,8 @@ public class DrawerContentSlideActivity extends AppCompatActivity implements App
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.centerCrop();
         requestOptions.override(150, 150);
-        requestOptions.placeholder(R.drawable.user_ic);
-        requestOptions.error(R.drawable.user_ic);
+        requestOptions.placeholder(R.drawable.user);
+        requestOptions.error(R.drawable.user);
 
         Glide.with(context)
                 .setDefaultRequestOptions(requestOptions)
@@ -485,11 +485,11 @@ public class DrawerContentSlideActivity extends AppCompatActivity implements App
     }
 
     private void Logout() {
-        new AlertDialog.Builder(this).setTitle(getString(R.string.app_name)).setMessage(getString(R.string.logout_text)).setIcon((int) R.mipmap.ic_launcher).setPositiveButton(getResources().getString(R.string.yes), new C03446()).setNegativeButton(getResources().getString(R.string.no), new C03435()).show();
+        new AlertDialog.Builder(this).setTitle(getString(R.string.app_name)).setMessage(getString(R.string.logout_text)).setIcon((int) R.drawable.loginlogo).setPositiveButton(getResources().getString(R.string.yes), new C03446()).setNegativeButton(getResources().getString(R.string.no), new C03435()).show();
     }
 
     private void Exit() {
-        new AlertDialog.Builder(this).setTitle(getString(R.string.app_name)).setMessage(getString(R.string.exit_text)).setIcon((int) R.mipmap.ic_launcher).setPositiveButton(getResources().getString(R.string.yes), new C03424()).setNegativeButton(getResources().getString(R.string.no), new C03435()).show();
+        new AlertDialog.Builder(this).setTitle(getString(R.string.app_name)).setMessage(getString(R.string.exit_text)).setIcon((int) R.drawable.loginlogo).setPositiveButton(getResources().getString(R.string.yes), new C03424()).setNegativeButton(getResources().getString(R.string.no), new C03435()).show();
     }
 
     @Override

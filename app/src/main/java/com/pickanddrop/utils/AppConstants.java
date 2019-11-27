@@ -45,7 +45,9 @@ public interface AppConstants {
     String ENGLISH = "en";
     String BASE_URL= "http://18.218.152.94/index.php/ApiController/";
 //    String BASE_URL = "http://18.221.13.149/pickanddeliver/admin/index.php/ApiController/";
-    String IMAGE_URL = "http://18.221.13.149/pickanddeliver/admin/image/";
+    String IMAGE_URL = "http://18.218.152.94/image/";
+//    String IMAGE_URL = "http://18.221.13.149/pickanddeliver/admin/image/";
+
     String APP_TOKEN = "COURIERAPP-30062016";
 
     String CUSTOMER = "1";

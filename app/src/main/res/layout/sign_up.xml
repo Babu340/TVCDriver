@@ -31,7 +31,7 @@
                         android:layout_gravity="center"
                         android:layout_height="90dp"
                         android:layout_marginTop="@dimen/activity_margin_normal_"
-                        android:src="@drawable/user_ic"
+                        android:src="@drawable/user"
                         android:visibility="visible" />
 
                     <LinearLayout
@@ -212,11 +212,10 @@
                         android:layout_width="0dp"
                         android:layout_weight="3.5"
                         android:layout_height="match_parent"
-                        app:ccp_defaultCode="91"
+                        app:ccp_defaultCode="1"
                         android:gravity="center"
                         app:ccp_hideNameCode="true"
-                        app:ccp_defaultNameCode="IN"
-                        app:ccp_enablePhoneAutoFormatter="true"
+                        app:ccp_defaultNameCode="US"
                         app:ccp_textSize="@dimen/text_size_extra_normal"
                         android:background="@drawable/edit_profile_rect"
                         android:textSize="@dimen/text_size_extra_normal"
@@ -231,12 +230,33 @@
                         android:autofillHints="@string/mob_no_txt"
                         android:hint="@string/mob_no_txt"
                         android:layout_marginStart="@dimen/activity_margin_normal"
-                        android:maxLength="10"
+                        android:freezesText="true"
+                        android:singleLine="true"
                         android:imeOptions="actionNext"
                         android:inputType="phone" />
-
                 </LinearLayout>
-
+                <LinearLayout
+                    android:id="@+id/ll_mobile_number_error"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="3.5"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:textColor="#FF0000"
+                        android:text="@string/enter_vaild_number"
+                        android:layout_width="0dp"
+                        android:layout_weight="6.5"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/activity_margin_normal_"
+                        android:freezesText="true"
+                        android:singleLine="true"
+                        />
+                </LinearLayout>
 <!--                    <EditText-->
 <!--                        android:id="@+id/et_landline"-->
 <!--                        style="@style/edit_text_login_style"-->
@@ -476,7 +496,14 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:visibility="visible"
-                            android:background="@color/transparent" />
+                            android:background="@color/transparent"
+                            style="@style/Widget.AppCompat.Spinner"
+                            android:dropDownWidth="match_parent"
+                            android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
+                            android:popupBackground="@drawable/spinner_rect"
+                            android:popupElevation="3dp"
+                            android:stateListAnimator="@animator/spinner_sla"
+                            />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -509,6 +536,7 @@
                     android:inputType="textCapCharacters|number" />
 
                 <ImageView
+                    android:adjustViewBounds="true"
                     android:id="@+id/iv_licence"
                     android:layout_width="200dp"
                     android:layout_gravity="center"
@@ -534,6 +562,7 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:adjustViewBounds="true"
                     android:id="@+id/iv_insurance"
                     android:layout_width="210dp"
                     android:layout_gravity="center"
@@ -645,7 +674,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/edit"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:padding="@dimen/activity_margin_medium"/>

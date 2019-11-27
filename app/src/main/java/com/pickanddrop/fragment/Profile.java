@@ -150,8 +150,8 @@ public class Profile extends BaseFragment implements AppConstants, View.OnClickL
         requestOptions = new RequestOptions();
         requestOptions.centerCrop();
         requestOptions.override(150, 150);
-        requestOptions.placeholder(R.drawable.user_ic);
-        requestOptions.error(R.drawable.user_ic);
+        requestOptions.placeholder(R.drawable.user);
+        requestOptions.error(R.drawable.user);
 
         if (appSession.getUserType().equals(DRIVER)) {
             signUpBinding.llVehicleText.setVisibility(View.VISIBLE);
@@ -492,8 +492,8 @@ public class Profile extends BaseFragment implements AppConstants, View.OnClickL
                     RequestOptions requestOptions = new RequestOptions();
                     requestOptions.centerCrop();
                     requestOptions.override(150, 150);
-                    requestOptions.placeholder(R.drawable.user_ic);
-                    requestOptions.error(R.drawable.user_ic);
+                    requestOptions.placeholder(R.drawable.user);
+                    requestOptions.error(R.drawable.user);
 
                     Glide.with(context)
                             .setDefaultRequestOptions(requestOptions)

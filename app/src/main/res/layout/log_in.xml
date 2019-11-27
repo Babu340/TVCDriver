@@ -108,38 +108,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password" />
 
 
-<!--        <LinearLayout-->
-<!--            android:id="@+id/ll_sign_up"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentTop="true"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:gravity="center_vertical"-->
-<!--            android:layout_marginTop="@dimen/activity_margin_large"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/guideline8"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/guideline7"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/btn_login" >-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:fontFamily="@font/titillium_regular"-->
-<!--                android:text="@string/dont_account_txt"-->
-<!--                android:textSize="@dimen/text_size_extra_normal"-->
-<!--                android:textColor="@color/black_color" />-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="@dimen/text_margin_small"-->
-<!--                android:textSize="@dimen/text_size_extra_normal"-->
-<!--                android:fontFamily="@font/titillium_regular"-->
-<!--                android:text="@string/sign_uphere_txt"-->
-<!--                android:textStyle="bold"-->
-<!--                android:textColor="@color/white_color" />-->
-<!--        </LinearLayout>-->
-
         <LinearLayout
             android:id="@+id/ll_sign_up_driver"
             android:layout_width="wrap_content"
@@ -148,8 +116,6 @@
             android:layout_centerHorizontal="true"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:padding="@dimen/activity_margin_normal"
-            android:background="@drawable/signupdriver"
             android:layout_marginTop="@dimen/activity_margin_large"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="@+id/guideline7"
@@ -159,7 +125,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/titillium_regular"
-                android:text="@string/driver_reg_txt"
+                android:text="@string/dont_account_txt"
                 android:textSize="@dimen/text_size_extra_normal"
                 android:textColor="@color/black_color" />
 
@@ -169,11 +135,45 @@
                 android:layout_marginStart="@dimen/text_margin_small"
                 android:textSize="@dimen/text_size_extra_normal"
                 android:fontFamily="@font/titillium_regular"
-                android:text="@string/click_here_txt"
-                android:drawableRight="@drawable/arrow"
+                android:text="@string/sign_uphere_txt"
                 android:textStyle="bold"
                 android:textColor="@color/white_color" />
         </LinearLayout>
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ll_sign_up_driver"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:padding="@dimen/activity_margin_normal"-->
+<!--            android:background="@drawable/signupdriver"-->
+<!--            android:layout_marginTop="@dimen/activity_margin_large"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline8"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/guideline7"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/btn_login" >-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/titillium_regular"-->
+<!--                android:text="@string/driver_reg_txt"-->
+<!--                android:textSize="@dimen/text_size_extra_normal"-->
+<!--                android:textColor="@color/black_color" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/text_margin_small"-->
+<!--                android:textSize="@dimen/text_size_extra_normal"-->
+<!--                android:fontFamily="@font/titillium_regular"-->
+<!--                android:text="@string/click_here_txt"-->
+<!--                android:drawableRight="@drawable/arrow"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/white_color" />-->
+<!--        </LinearLayout>-->
 
     </android.support.constraint.ConstraintLayout>
 </layout>

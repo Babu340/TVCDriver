@@ -39,8 +39,8 @@ public class DriverDeliveryAdapter extends RecyclerView.Adapter<DriverDeliveryAd
         requestOptions = new RequestOptions();
         requestOptions.centerCrop();
         requestOptions.override(150, 150);
-        requestOptions.placeholder(R.drawable.user_ic);
-        requestOptions.error(R.drawable.user_ic);
+        requestOptions.placeholder(R.drawable.user);
+        requestOptions.error(R.drawable.user);
 
         requestOptions1 = new RequestOptions();
         requestOptions1.override(100, 100);
@@ -63,12 +63,14 @@ public class DriverDeliveryAdapter extends RecyclerView.Adapter<DriverDeliveryAd
             viewHolder.tvDeliveryContactNo.setVisibility(View.GONE);
             viewHolder.tvDeliveryContactName.setVisibility(View.GONE);
             viewHolder.tvPrice.setVisibility(View.GONE);
+            viewHolder.tvDrivertype.setVisibility(View.VISIBLE);
 
             viewHolder.tvDeliveryId.setText(context.getString(R.string.delivery_id_txt) +" - "+ deliveryDTOArrayList.get(position).getOrderId());
             viewHolder.tvDeliveryDate.setText(context.getString(R.string.pickup_contact_name) +" - "+ deliveryDTOArrayList.get(position).getPickupFirstName() +" "+deliveryDTOArrayList.get(position).getPickupLastName());
             viewHolder.tvPickLoc.setText(context.getString(R.string.delivery_datein_txt) +" - "+ deliveryDTOArrayList.get(position).getDeliveryDate());
             viewHolder.tvDriverName.setText(context.getString(R.string.driver_name) +" - "+ deliveryDTOArrayList.get(position).getFirstname()+" "+deliveryDTOArrayList.get(position).getLastname());
             viewHolder.tvDriverNo.setText(context.getString(R.string.delivery_contact_name_txt) +" - "+ deliveryDTOArrayList.get(position).getDropoffMobNumber());
+            viewHolder.tvDrivertype.setText(context.getString(R.string.ddelivery_type) +" - "+ deliveryDTOArrayList.get(position).getDeliveryType().toUpperCase());
 
             Glide.with(context)
                     .setDefaultRequestOptions(requestOptions)
@@ -81,15 +83,16 @@ public class DriverDeliveryAdapter extends RecyclerView.Adapter<DriverDeliveryAd
             viewHolder.tvDeliveryContactName.setVisibility(View.GONE);
             viewHolder.tvDriverName.setVisibility(View.GONE);
             viewHolder.tvPrice.setVisibility(View.GONE);
+            viewHolder.tvDrivertype.setVisibility(View.VISIBLE);
 
             viewHolder.tvDeliveryId.setText(context.getString(R.string.delivery_id_txt) +" - "+ deliveryDTOArrayList.get(position).getOrderId());
             viewHolder.tvDeliveryDate.setText(context.getString(R.string.delivery_datein_txt) +" - "+ deliveryDTOArrayList.get(position).getDeliveryDate());
             viewHolder.tvPickLoc.setText(context.getString(R.string.pickup_loc_txt) +" - "+ deliveryDTOArrayList.get(position).getPickupaddress());
             viewHolder.tvDropLoc.setText(context.getString(R.string.delivery_loc_txt) +" - "+ deliveryDTOArrayList.get(position).getDropoffaddress());
-
+            viewHolder.tvDrivertype.setText(context.getString(R.string.ddelivery_type) +" - "+ deliveryDTOArrayList.get(position).getDeliveryType().toUpperCase());
 
             try {
-                viewHolder.tvDriverNo.setText(context.getString(R.string.delivery_price) +" - "+ context.getString(R.string.us_dollar) +" "+ String.format("%.2f", Double.parseDouble(deliveryDTOArrayList.get(position).getDriverDeliveryCost())));
+                viewHolder.tvDriverNo.setText(context.getString(R.string.delivery_price) +" - "+ context.getString(R.string.us_dollar) +" "+ String.format("%.2f", Double.parseDouble(deliveryDTOArrayList.get(position).getDeliveryCost())));
             } catch (Exception e) {
                 viewHolder.tvDriverNo.setText(context.getString(R.string.us_dollar));
                 e.printStackTrace();
@@ -117,14 +120,15 @@ public class DriverDeliveryAdapter extends RecyclerView.Adapter<DriverDeliveryAd
             viewHolder.ivProfile.setVisibility(View.GONE);
             viewHolder.tvDriverName.setVisibility(View.GONE);
             viewHolder.tvDriverNo.setVisibility(View.GONE);
+            viewHolder.tvDrivertype.setVisibility(View.VISIBLE);
 
             viewHolder.tvDeliveryId.setText(context.getString(R.string.delivery_id_txt) +" - "+ deliveryDTOArrayList.get(position).getOrderId());
             viewHolder.tvDeliveryDate.setText(context.getString(R.string.delivery_datein_txt) +" - "+ deliveryDTOArrayList.get(position).getDeliveryDate());
             viewHolder.tvPickLoc.setText(context.getString(R.string.pickup_loc_txt) +" - "+ deliveryDTOArrayList.get(position).getPickupaddress());
             viewHolder.tvDropLoc.setText(context.getString(R.string.delivery_loc_txt) +" - "+ deliveryDTOArrayList.get(position).getDropoffaddress());
-
+            viewHolder.tvDrivertype.setText(context.getString(R.string.ddelivery_type) +" - "+ deliveryDTOArrayList.get(position).getDeliveryType().toUpperCase());
             try {
-                viewHolder.tvPrice.setText(context.getString(R.string.us_dollar) +" "+ String.format("%.2f", Double.parseDouble(deliveryDTOArrayList.get(position).getDriverDeliveryCost())));
+                viewHolder.tvPrice.setText(context.getString(R.string.us_dollar) +" "+ String.format("%.2f", Double.parseDouble(deliveryDTOArrayList.get(position).getDeliveryCost())));
             } catch (Exception e) {
                 viewHolder.tvPrice.setText(context.getString(R.string.us_dollar));
                 e.printStackTrace();
@@ -154,9 +158,9 @@ public class DriverDeliveryAdapter extends RecyclerView.Adapter<DriverDeliveryAd
         }
 
         if (deliveryDTOArrayList.get(position).getDeliveryType() != null) {
-            if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("2HOUR")) {
+            if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("express")) {
                 viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.two_hours));
-            } else if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("4HOUR")) {
+            } else if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("single")) {
                 viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.four_hours));
             } else {
                 viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.same_hours));
@@ -175,10 +179,11 @@ public class DriverDeliveryAdapter extends RecyclerView.Adapter<DriverDeliveryAd
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvPriceText, tvPrice, tvDeliveryId, tvDeliveryDate, tvPickLoc, tvDropLoc, tvDeliveryContactName, tvDeliveryContactNo, tvDriverName, tvDriverNo;
+        private TextView tvPriceText, tvPrice, tvDeliveryId, tvDeliveryDate, tvPickLoc, tvDropLoc, tvDeliveryContactName, tvDeliveryContactNo, tvDriverName, tvDriverNo, tvDrivertype;
         private ImageViewCircular ivProfile;
         private ImageView ivVehicle;
         private View viewHours;
+
 
         public ViewHolder(View view) {
             super(view);
@@ -190,11 +195,11 @@ public class DriverDeliveryAdapter extends RecyclerView.Adapter<DriverDeliveryAd
             tvDeliveryContactNo = (TextView) view.findViewById(R.id.tv_delivery_contact_no);
             tvDriverName = (TextView) view.findViewById(R.id.tv_driver_name);
             tvDriverNo = (TextView) view.findViewById(R.id.tv_driver_no);
+            tvDrivertype = (TextView) view.findViewById(R.id.tv_driver_type);
             ivProfile = (ImageViewCircular) view.findViewById(R.id.iv_profile);
             ivVehicle = (ImageView) view.findViewById(R.id.iv_vehicle);
             tvPriceText = (TextView) view.findViewById(R.id.tv_price_text);
             tvPrice = (TextView) view.findViewById(R.id.tv_price);
-
             viewHours = (View) view.findViewById(R.id.view_hours);
         }
     }

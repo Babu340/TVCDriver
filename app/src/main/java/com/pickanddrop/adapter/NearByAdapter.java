@@ -43,13 +43,14 @@ public class NearByAdapter extends RecyclerView.Adapter<NearByAdapter.ViewHolder
         requestOptions = new RequestOptions();
         requestOptions.centerCrop();
         requestOptions.override(150, 150);
-        requestOptions.placeholder(R.drawable.user_ic);
-        requestOptions.error(R.drawable.user_ic);
+        requestOptions.placeholder(R.drawable.user);
+        requestOptions.error(R.drawable.user);
 
         requestOptions1 = new RequestOptions();
         requestOptions1.override(100, 100);
         requestOptions1.placeholder(R.drawable.truck_list);
         requestOptions1.error(R.drawable.truck_list);
+
     }
 
 
@@ -72,14 +73,16 @@ public class NearByAdapter extends RecyclerView.Adapter<NearByAdapter.ViewHolder
             viewHolder.tvDropLoc.setVisibility(View.VISIBLE);
             viewHolder.tvPrice.setVisibility(View.VISIBLE);
             viewHolder.ivProfile.setVisibility(View.GONE);
+            viewHolder.tvDeliveryType.setVisibility(View.VISIBLE);
+
 
             viewHolder.tvDeliveryId.setText(context.getString(R.string.delivery_id_txt) + " - " + deliveryDTOArrayList.get(position).getOrderId());
             viewHolder.tvDeliveryDate.setText(context.getString(R.string.delivery_datein_txt) + " - " + deliveryDTOArrayList.get(position).getDeliveryDate());
             viewHolder.tvPickLoc.setText(context.getString(R.string.pickup_loc_txt) + " - " + deliveryDTOArrayList.get(position).getPickupaddress());
             viewHolder.tvDropLoc.setText(context.getString(R.string.delivery_loc_txt) + " - " + deliveryDTOArrayList.get(position).getDropoffaddress());
-
+            viewHolder.tvDeliveryType.setText(context.getString(R.string.ddelivery_type) + " - " + deliveryDTOArrayList.get(position).getDeliveryType().toUpperCase());
             try {
-                viewHolder.tvPrice.setText(context.getString(R.string.us_dollar) + " " + String.format("%.2f", Double.parseDouble(deliveryDTOArrayList.get(position).getDriverDeliveryCost())));
+                viewHolder.tvPrice.setText(context.getString(R.string.us_dollar) + " " + String.format("%.2f", Double.parseDouble(deliveryDTOArrayList.get(position).getDeliveryCost())));
             } catch (Exception e) {
                 viewHolder.tvPrice.setText(context.getString(R.string.us_dollar));
                 e.printStackTrace();
@@ -121,7 +124,7 @@ public class NearByAdapter extends RecyclerView.Adapter<NearByAdapter.ViewHolder
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvPriceText, tvPrice, tvDeliveryId, tvDeliveryDate, tvPickLoc, tvDropLoc, tvAccept;
+        private TextView tvPriceText, tvPrice, tvDeliveryId, tvDeliveryDate, tvPickLoc, tvDropLoc, tvAccept, tvDeliveryType;
         private ImageViewCircular ivProfile;
         private ImageView ivVehicle;
 
@@ -136,6 +139,7 @@ public class NearByAdapter extends RecyclerView.Adapter<NearByAdapter.ViewHolder
             tvPriceText = (TextView) view.findViewById(R.id.tv_price_text);
             tvPrice = (TextView) view.findViewById(R.id.tv_price);
             tvAccept = (TextView) view.findViewById(R.id.tv_accept);
+            tvDeliveryType = (TextView) view.findViewById(R.id.tv_delivery_type);
         }
     }
 

@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/user_ic" />
+        app:srcCompat="@drawable/user" />
 
     <android.support.constraint.Barrier
         android:id="@+id/barrier"
@@ -87,6 +87,21 @@
         android:layout_marginTop="@dimen/text_margin_mini"
         android:ellipsize="end"/>
 
+    <TextView
+        android:id="@+id/tv_delivery_type"
+        android:layout_marginStart="@dimen/text_margin_small"
+        android:fontFamily="@font/titillium_regular"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_normal"
+        android:layout_width="0dp"
+        android:text="@string/ddelivery_type"
+        app:layout_constraintTop_toBottomOf="@id/tv_delivery_location"
+        app:layout_constraintEnd_toStartOf="@id/iv_vehicle"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin_mini"
+        android:ellipsize="end"/>
+
 
     <TextView
         android:id="@+id/tv_price_text"
@@ -100,7 +115,7 @@
         android:textStyle="bold"
         android:layout_marginEnd="@dimen/text_margin_small"
         app:layout_constraintEnd_toStartOf="@id/iv_vehicle"
-        app:layout_constraintTop_toBottomOf="@id/tv_delivery_location"
+        app:layout_constraintTop_toBottomOf="@id/tv_delivery_type"
         app:layout_constraintStart_toEndOf="@id/barrier"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin_small" />

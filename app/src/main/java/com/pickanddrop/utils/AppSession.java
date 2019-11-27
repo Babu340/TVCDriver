@@ -137,12 +137,12 @@ public class AppSession {
 
 
     public boolean isLogin() {
-        return mSharedPreferences.getBoolean("Login", false);
+        return mSharedPreferences.getBoolean("getLoginDriver", false);
     }
 
     public void setLogin(boolean Login) {
         prefsEditor = mSharedPreferences.edit();
-        prefsEditor.putBoolean("Login", Login);
+        prefsEditor.putBoolean("getLoginDriver", Login);
         prefsEditor.commit();
     }
 

@@ -214,7 +214,7 @@ public class DeliveryDetails extends BaseFragment implements AppConstants, View.
                                 if (appSession.getUserType().equals(DRIVER)) {
 
                                     try {
-                                        deliveryDetailsBinding.tvDeliveryCharges.setText(getString(R.string.amonunt_txt) + " - " + getString(R.string.us_dollar) + " " + String.format("%.2f", Double.parseDouble(data.getDriverDeliveryCost())));
+                                        deliveryDetailsBinding.tvDeliveryCharges.setText(getString(R.string.amonunt_txt) + " - " + getString(R.string.us_dollar) + " " + String.format("%.2f", Double.parseDouble(data.getDeliveryCost())));
                                     } catch (Exception e) {
                                         deliveryDetailsBinding.tvDeliveryCharges.setText(context.getString(R.string.us_dollar));
                                         e.printStackTrace();

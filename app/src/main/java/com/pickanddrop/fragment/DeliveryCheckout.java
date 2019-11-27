@@ -171,7 +171,7 @@ public class DeliveryCheckout extends BaseFragment implements AppConstants, View
             map.put("parcel_lenght", deliveryDTO.getParcelLenght());
             map.put("parcel_weight", deliveryDTO.getParcelWeight());
             map.put("delivery_type", deliveryDTO.getDeliveryType());
-            map.put("driver_delivery_cost", deliveryDTO.getDriverDeliveryCost());
+            map.put("driver_delivery_cost", deliveryDTO.getDeliveryCost());
             map.put("delivery_distance", deliveryDTO.getDeliveryDistance());
 
             try {

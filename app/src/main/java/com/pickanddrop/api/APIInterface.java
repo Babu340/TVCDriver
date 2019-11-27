@@ -84,7 +84,7 @@ public interface APIInterface {
 
     @FormUrlEncoded
     @POST("get_user_deliveries")
-    Call<DeliveryDTO> callUserCurrentDeliveryApi(@FieldMap Map<String, String> map);
+    Call<DeliveryDTO>callUserCurrentDeliveryApi(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
     @POST("customerOrderHistory")
@@ -145,3 +145,4 @@ public interface APIInterface {
     @POST("logout")
     Call<OtherDTO> callLogoutApi(@FieldMap Map<String, String> map);
 }
+

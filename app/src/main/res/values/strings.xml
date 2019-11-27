@@ -42,6 +42,7 @@
     <string name="your_confirm_pass_doesnot">Your password and confirm password does not match.</string>
     <string name="validation_title">Whoops!</string>
 
+
     <!--Sign Up Next-->
     <string name="please_enter_first_name">Please enter your name.</string>
     <string name="please_enter_last_name">Please enter your last name.</string>
@@ -51,6 +52,7 @@
     <string name="please_enter_valid_mobile_number">Mobile number is not valid.</string>
     <string name="please_enter_county_code">Please enter country code.</string>
     <string name="please_enter_valid_county_code">Please enter valid country code.</string>
+    <string name="please_enter_vaild_number">Please enter vaild number.</string>
     <string name="Whoops">Whoops!</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -300,6 +302,7 @@
     <string name="driver_name">Driver Name</string>
     <string name="delivery_price">Delivery Price</string>
     <string name="driver_number">Driver Number</string>
+    <string name="ddelivery_type">Driver Type</string>
     <string name="amonunt_txt">Amount</string>
     <string name="time_duration_txt">2 h 00m</string>
     <string name="price">Price</string>
@@ -330,10 +333,11 @@
     <string name="hint_cancel">Cancel</string>
     <string name="hint_clear">Clear</string>
     <string name="hint_save">Save</string>
-    <string name="please_enter_name_client">Please enter client name.</string>
+    <string name="please_enter_name_client">Please enter receiver name.</string>
     <string name="please_take_signature_client">Please take signature of client.</string>
     <string name="please_take_image_client">Please take image of delivery items.</string>
     <string name="driver_id">Driver Id</string>
+    <string name="enter_vaild_number">Enter vaild number</string>
 
     <string name="not_available">This delivery option is not available at this time.</string>
 

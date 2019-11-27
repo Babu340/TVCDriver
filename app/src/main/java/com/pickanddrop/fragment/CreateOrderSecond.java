@@ -486,7 +486,7 @@ public class CreateOrderSecond extends BaseFragment implements AppConstants, Vie
             map.put("parcel_lenght", deliveryDTO.getParcelLenght());
             map.put("parcel_weight", deliveryDTO.getParcelWeight());
             map.put("delivery_type", deliveryDTO.getDeliveryType());
-            map.put("driver_delivery_cost", deliveryDTO.getDriverDeliveryCost());
+            map.put("driver_delivery_cost", deliveryDTO.getDeliveryCost());
             map.put("delivery_distance", deliveryDTO.getDeliveryDistance());
             map.put("delivery_cost", deliveryDTO.getDeliveryCost());
             map.put("dropoff_comapny_name", deliveryDTO.getDropoffComapnyName());

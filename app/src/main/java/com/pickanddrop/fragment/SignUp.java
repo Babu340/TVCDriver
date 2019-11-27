@@ -15,6 +15,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +41,7 @@ import com.pickanddrop.utils.CustomSpinnerForAll;
 import com.pickanddrop.utils.OnDialogConfirmListener;
 import com.pickanddrop.utils.PermissionUtil;
 import com.pickanddrop.utils.Utilities;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -101,6 +104,36 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
 //        signUpBinding.ccp.enablePhoneAutoFormatter(true);
 //        signUpBinding.ccp.hideNameCode(true);
 //        signUpBinding.ccp.setDefaultCountryUsingNameCode("IN");
+
+        signUpBinding.ccp.registerPhoneNumberTextView(signUpBinding.etMobile);
+//        signUpBinding.ccp.enablePhoneAutoFormatter(true);
+//        signUpBinding.ccp.hideNameCode(true);
+        signUpBinding.ccp.setDefaultCountryUsingNameCode("US");
+        signUpBinding.etMobile.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String tt = s.toString();
+                if(signUpBinding.ccp.isValid()) {
+                    signUpBinding.llMobileNumberError.setVisibility(View.GONE);
+//                    ll_mobile_number_error
+//                    Toast.makeText(getContext(), "number " + signUpBinding.ccp.getFullNumber() + " is valid.", Toast.LENGTH_LONG).show();
+                } else {
+                    signUpBinding.llMobileNumberError.setVisibility(View.VISIBLE);
+//                    Toast.makeText(getContext(), "number " + signUpBinding.ccp.getFullNumber() + " not valid!!!", Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
 
         signUpBinding.btnSignup.setOnClickListener(this);
@@ -316,6 +349,10 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
             utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_mobile_number), getString(R.string.ok), false);
             signUpBinding.etMobile.requestFocus();
             return false;
+        } else if(!signUpBinding.ccp.isValid()){
+                utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_vaild_number), getString(R.string.ok), false);
+                signUpBinding.etMobile.requestFocus();
+                return false;
 //        } else if (!utilities.checkMobile(mobile)) {
 //            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_valid_mobile_number), getString(R.string.ok), false);
 //            signUpBinding.etMobile.requestFocus();
@@ -573,8 +610,8 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
                     RequestOptions requestOptions = new RequestOptions();
                     requestOptions.centerCrop();
                     requestOptions.override(150, 150);
-                    requestOptions.placeholder(R.drawable.user_ic);
-                    requestOptions.error(R.drawable.user_ic);
+                    requestOptions.placeholder(R.drawable.user);
+                    requestOptions.error(R.drawable.user);
 
                     Glide.with(context)
                             .setDefaultRequestOptions(requestOptions)
@@ -594,8 +631,12 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
                     RequestOptions requestOptions = new RequestOptions();
                     requestOptions.centerCrop();
                     requestOptions.override(200, 150);
-                    requestOptions.placeholder(R.drawable.driverlicence);
-                    requestOptions.error(R.drawable.driverlicence);
+                    requestOptions.placeholder(R.drawable.dummy_driving_license);
+                    requestOptions.error(R.drawable.dummy_driving_license);
+
+//                    Picasso.get().load(lisencePath).into(signUpBinding.ivLicence);
+
+//                    Picasso.get().load(lisencePath).placeholder(R.drawable.dummy_driving_license).error(R.drawable.dummy_driving_license).into(signUpBinding.ivLicence);
 
                     Glide.with(context)
                             .setDefaultRequestOptions(requestOptions)
@@ -615,8 +656,8 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
                     RequestOptions requestOptions = new RequestOptions();
                     requestOptions.centerCrop();
                     requestOptions.override(210, 297);
-                    requestOptions.placeholder(R.drawable.driverlicence);
-                    requestOptions.error(R.drawable.driverlicence);
+                    requestOptions.placeholder(R.drawable.dummyinsurance);
+                    requestOptions.error(R.drawable.dummyinsurance);
 
                     Glide.with(context)
                             .setDefaultRequestOptions(requestOptions)
@@ -678,7 +719,8 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
             partMap.put("email", RequestBody.create(MediaType.parse("email"), email));
             partMap.put("password", RequestBody.create(MediaType.parse("password"), password));
             partMap.put("user_type", RequestBody.create(MediaType.parse("user_type"),"2"));
-            partMap.put("type_of_truck", RequestBody.create(MediaType.parse("vehicle_type"), vehicleType));
+            partMap.put("vehicle_type", RequestBody.create(MediaType.parse("vehicle_type"), vehicleType));
+            partMap.put("type_of_truck", RequestBody.create(MediaType.parse("type_of_truck"), vehicleType));
             partMap.put("social_security_number", RequestBody.create(MediaType.parse("social_security_number"), socialSecurityNo));
 
 //            partMap.put("vehicle_type", RequestBody.create(MediaType.parse("vehicle_type"), vehicleType));

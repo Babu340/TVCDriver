@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/guideline3"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/app_bar"
             app:layout_constraintHorizontal_bias="0.5"
             android:layout_marginBottom="@dimen/activity_margin_medium"
             app:layout_constraintStart_toStartOf="parent"
@@ -178,13 +178,29 @@
             app:layout_constraintStart_toEndOf="@id/guideline"
             app:layout_constraintTop_toBottomOf="@id/barrier2">
 
+<!--            <Spinner-->
+<!--                android:id="@+id/sp_reason"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="@color/transparent"-->
+<!--                android:visibility="visible" />-->
+
             <Spinner
                 android:id="@+id/sp_reason"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:visibility="visible"
                 android:background="@color/transparent"
-                android:visibility="visible" />
+                style="@style/Widget.AppCompat.Spinner"
+                android:dropDownWidth="match_parent"
+                android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
+                android:popupBackground="@drawable/spinner_rect"
+                android:popupElevation="3dp"
+                android:stateListAnimator="@animator/spinner_sla"
+                />
+
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -226,7 +242,6 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/et_comments" />
-
     </android.support.constraint.ConstraintLayout>
     </ScrollView>
 </layout>
