@@ -150,8 +150,8 @@ public class Profile extends BaseFragment implements AppConstants, View.OnClickL
         requestOptions = new RequestOptions();
         requestOptions.centerCrop();
         requestOptions.override(150, 150);
-        requestOptions.placeholder(R.drawable.user);
-        requestOptions.error(R.drawable.user);
+        requestOptions.placeholder(R.drawable.user_praba);
+        requestOptions.error(R.drawable.user_praba);
 
         if (appSession.getUserType().equals(DRIVER)) {
             signUpBinding.llVehicleText.setVisibility(View.VISIBLE);
@@ -409,9 +409,9 @@ public class Profile extends BaseFragment implements AppConstants, View.OnClickL
 //            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_valid_mobile_number), getString(R.string.ok), false);
 //            signUpBinding.etMobile.requestFocus();
 //            return false;
-        } else if (dob == null || dob.equals("")) {
-            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_select_dob), getString(R.string.ok), false);
-            return false;
+//        } else if (dob == null || dob.equals("")) {
+//            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_select_dob), getString(R.string.ok), false);
+//            return false;
         }
 //        else if (house == null || house.equals("")) {
 //            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_house_no), getString(R.string.ok), false);
@@ -492,8 +492,8 @@ public class Profile extends BaseFragment implements AppConstants, View.OnClickL
                     RequestOptions requestOptions = new RequestOptions();
                     requestOptions.centerCrop();
                     requestOptions.override(150, 150);
-                    requestOptions.placeholder(R.drawable.user);
-                    requestOptions.error(R.drawable.user);
+                    requestOptions.placeholder(R.drawable.user_praba);
+                    requestOptions.error(R.drawable.user_praba);
 
                     Glide.with(context)
                             .setDefaultRequestOptions(requestOptions)

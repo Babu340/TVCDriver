@@ -51,7 +51,8 @@ public class Login extends BaseFragment implements AppConstants, View.OnClickLis
     private String email = "", password = "", notiificationId = "";
     private String TAG = Login.class.getName();
     private final int PERMISSIONS_REQUEST_READ_CONTACTS = 1212;
-    String[] PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+    String[] PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
     LoginModel loginModel = new LoginModel();
 
     @Nullable
@@ -84,6 +85,10 @@ public class Login extends BaseFragment implements AppConstants, View.OnClickLis
             notiificationId = FirebaseInstanceId.getInstance().getToken();
             appSession.setFCMToken(notiificationId);
         }
+        if (!hasPermissions(context, PERMISSIONS)) {
+            ActivityCompat.requestPermissions(((SplashActivity) context), PERMISSIONS, PERMISSIONS_REQUEST_READ_CONTACTS);
+        }
+
     }
 
     public boolean isValid() {

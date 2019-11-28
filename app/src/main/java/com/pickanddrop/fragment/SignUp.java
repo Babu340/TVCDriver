@@ -22,6 +22,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ import com.pickanddrop.utils.AppSession;
 import com.pickanddrop.utils.CustomSpinnerForAll;
 import com.pickanddrop.utils.OnDialogConfirmListener;
 import com.pickanddrop.utils.PermissionUtil;
+import com.pickanddrop.utils.SpinnerAdapter;
 import com.pickanddrop.utils.Utilities;
 import com.squareup.picasso.Picasso;
 
@@ -47,6 +49,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.MediaType;
@@ -162,30 +165,46 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
 //            signUpBinding.etDob.setVisibility(View.VISIBLE);
 //            signUpBinding.etGstNo.setVisibility(View.VISIBLE);
 //            signUpBinding.llGst.setVisibility(View.VISIBLE);
-
+            ArrayList<String> listAll = new ArrayList<String>();
             HashMap<String, String> hashMap1 = new HashMap<>();
             hashMap1.put(PN_NAME, "");
             hashMap1.put(PN_VALUE, getResources().getString(R.string.vehicle_type));
+            listAll.add(getResources().getString(R.string.vehicle_type));
             vehicleList.add(hashMap1);
             hashMap1 = new HashMap<>();
             hashMap1.put(PN_NAME, "");
             hashMap1.put(PN_VALUE, getResources().getString(R.string.bike));
+            listAll.add(getResources().getString(R.string.bike));
             vehicleList.add(hashMap1);
             hashMap1 = new HashMap<>();
             hashMap1.put(PN_NAME, "");
             hashMap1.put(PN_VALUE, getResources().getString(R.string.car));
+            listAll.add(getResources().getString(R.string.car));
             vehicleList.add(hashMap1);
             hashMap1 = new HashMap<>();
             hashMap1.put(PN_NAME, "");
             hashMap1.put(PN_VALUE, getResources().getString(R.string.van));
+            listAll.add(getResources().getString(R.string.van));
             vehicleList.add(hashMap1);
             hashMap1 = new HashMap<>();
             hashMap1.put(PN_NAME, "");
             hashMap1.put(PN_VALUE, getResources().getString(R.string.truck));
-            vehicleList.add(hashMap1);
 
-            customSpinnerAdapter = new CustomSpinnerForAll(context, R.layout.spinner_textview, vehicleList, getResources().getColor(R.color.black_color), getResources().getColor(R.color.light_black), getResources().getColor(R.color.transparent));
-            signUpBinding.spType.setAdapter(customSpinnerAdapter);
+            vehicleList.add(hashMap1);
+            listAll.add(getResources().getString(R.string.truck));
+
+            SpinnerAdapter adapter = new SpinnerAdapter(context, R.layout.spinner_text);
+            adapter.setDropDownViewResource(R.layout.spinner_item_list);
+            adapter.addAll(listAll);
+
+//            ArrayAdapter adapter = new ArrayAdapter<String>(context, R.layout.spinner_text, listAll);
+//            adapter.setDropDownViewResource(R.layout.spinner_item_list);
+            signUpBinding.spType.setAdapter(adapter);
+            signUpBinding.spType.setSelection(adapter.getCount());
+
+//
+//            customSpinnerAdapter = new CustomSpinnerForAll(context, R.layout.spinner_textview, vehicleList, getResources().getColor(R.color.black_color), getResources().getColor(R.color.light_black), getResources().getColor(R.color.transparent));
+//            signUpBinding.spType.setAdapter(customSpinnerAdapter);
 
             signUpBinding.spType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
@@ -610,8 +629,8 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
                     RequestOptions requestOptions = new RequestOptions();
                     requestOptions.centerCrop();
                     requestOptions.override(150, 150);
-                    requestOptions.placeholder(R.drawable.user);
-                    requestOptions.error(R.drawable.user);
+                    requestOptions.placeholder(R.drawable.user_praba);
+                    requestOptions.error(R.drawable.user_praba);
 
                     Glide.with(context)
                             .setDefaultRequestOptions(requestOptions)

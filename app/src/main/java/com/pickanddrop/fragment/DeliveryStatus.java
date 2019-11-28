@@ -128,8 +128,8 @@ public class DeliveryStatus extends BaseFragment implements View.OnClickListener
         requestOptions = new RequestOptions();
         requestOptions.centerCrop();
         requestOptions.override(70, 70);
-        requestOptions.placeholder(R.drawable.user);
-        requestOptions.error(R.drawable.user);
+        requestOptions.placeholder(R.drawable.user_praba);
+        requestOptions.error(R.drawable.user_praba);
 
         Glide.with(context)
                 .setDefaultRequestOptions(requestOptions)

@@ -81,8 +81,8 @@ public class Review extends BaseFragment implements View.OnClickListener, AppCon
         requestOptions = new RequestOptions();
         requestOptions.centerCrop();
         requestOptions.override(100, 100);
-        requestOptions.placeholder(R.drawable.user);
-        requestOptions.error(R.drawable.user);
+        requestOptions.placeholder(R.drawable.user_praba);
+        requestOptions.error(R.drawable.user_praba);
 
         Glide.with(context)
                 .setDefaultRequestOptions(requestOptions)

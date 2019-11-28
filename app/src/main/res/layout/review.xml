@@ -55,7 +55,7 @@
             android:layout_width="90dp"
             android:layout_gravity="center"
             android:layout_height="90dp"
-            android:src="@drawable/user"
+            android:src="@drawable/user_praba"
             android:visibility="visible"
             app:layout_constraintBottom_toTopOf="@+id/tv_name"
             app:layout_constraintEnd_toEndOf="parent"

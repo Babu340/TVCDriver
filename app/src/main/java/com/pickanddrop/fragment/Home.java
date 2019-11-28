@@ -380,8 +380,8 @@ public class Home extends BaseFragment implements AppConstants, View.OnClickList
                                     requestOptions = new RequestOptions();
                                     requestOptions.centerCrop();
                                     requestOptions.override(40, 40);
-                                    requestOptions.placeholder(R.drawable.user);
-                                    requestOptions.error(R.drawable.user);
+                                    requestOptions.placeholder(R.drawable.user_praba);
+                                    requestOptions.error(R.drawable.user_praba);
                                     LocationDTO.Datum datum = (LocationDTO.Datum) marker.getTag();
                                     LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                                     View v = inflater.inflate(R.layout.marker_window, null);

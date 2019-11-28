@@ -43,8 +43,8 @@ public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDelivery
         requestOptions = new RequestOptions();
         requestOptions.centerCrop();
         requestOptions.override(150, 150);
-        requestOptions.placeholder(R.drawable.user);
-        requestOptions.error(R.drawable.user);
+        requestOptions.placeholder(R.drawable.user_praba);
+        requestOptions.error(R.drawable.user_praba);
 
         requestOptions1 = new RequestOptions();
         requestOptions1.override(100, 100);
@@ -126,7 +126,7 @@ public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDelivery
 
             Glide.with(context)
                     .setDefaultRequestOptions(requestOptions)
-                    .load(deliveryDTOArrayList.get(position).getProfileImage())
+                    .load(IMAGE_URL+deliveryDTOArrayList.get(position).getReceivedUserImage())
                     .into(viewHolder.ivProfile);
         } else {
             viewHolder.tvPickLoc.setVisibility(View.VISIBLE);

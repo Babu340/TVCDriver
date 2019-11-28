@@ -31,7 +31,7 @@
                         android:layout_gravity="center"
                         android:layout_height="90dp"
                         android:layout_marginTop="@dimen/activity_margin_normal_"
-                        android:src="@drawable/user"
+                        android:src="@drawable/user_praba"
                         android:visibility="visible" />
 
                     <LinearLayout
@@ -490,26 +490,42 @@
                         android:orientation="horizontal"
                         android:visibility="visible">
 
+<!--                        <Spinner-->
+<!--                            android:id="@+id/sp_type"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:visibility="visible"-->
+<!--                            android:background="@color/transparent"-->
+<!--                            style="@style/Widget.AppCompat.Spinner"-->
+<!--                            android:dropDownWidth="match_parent"-->
+<!--                            android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"-->
+<!--                            android:popupBackground="@drawable/spinner_rect"-->
+<!--                            android:popupElevation="3dp"-->
+<!--                            />-->
+
                         <Spinner
+                            android:layout_weight="1"
                             android:id="@+id/sp_type"
+                            style="@style/Widget.AppCompat.Spinner"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:visibility="visible"
-                            android:background="@color/transparent"
-                            style="@style/Widget.AppCompat.Spinner"
                             android:dropDownWidth="match_parent"
+                            android:background="@drawable/edit_profile_rect"
                             android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
-                            android:popupBackground="@drawable/spinner_rect"
+                            android:popupBackground="@android:color/white"
                             android:popupElevation="3dp"
                             android:stateListAnimator="@animator/spinner_sla"
-                            />
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/down_arrow"
-                            android:layout_marginEnd="@dimen/activity_margin_normal_"/>
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:src="@drawable/down_arrow"-->
+<!--                            android:layout_marginEnd="@dimen/activity_margin_normal_"/>-->
 
                     </LinearLayout>
                 <EditText
