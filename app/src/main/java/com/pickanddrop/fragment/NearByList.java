@@ -99,7 +99,7 @@ public class NearByList extends BaseFragment implements View.OnClickListener, Ap
                     .setCancelable(false)
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            callAcceptDeliveryApi(deliveryDTOArrayList.get(position).getOrderId());
+                            callAcceptDeliveryApi(deliveryDTOArrayList.get(position).getOrderId(),deliveryDTOArrayList.get(position).getUserId());
                         }
                     })
                     .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -192,7 +192,7 @@ public class NearByList extends BaseFragment implements View.OnClickListener, Ap
         }
     };
 
-    public void callAcceptDeliveryApi(String orderId) {
+    public void callAcceptDeliveryApi(final String orderId, final String userId) {
         if (!utilities.isNetworkAvailable())
             utilities.dialogOK(context, "", context.getResources().getString(R.string.network_error), context.getString(R.string.ok), false);
         else {
@@ -217,6 +217,7 @@ public class NearByList extends BaseFragment implements View.OnClickListener, Ap
                     if (response.isSuccessful()) {
                         try {
                             if (response.body().getResult().equalsIgnoreCase("success")) {
+                                callAddNotifyCountApi(orderId,userId);
                                 utilities.dialogOKre(context, "", response.body().getMessage(), getString(R.string.ok), new OnDialogConfirmListener() {
                                     @Override
                                     public void onYes() {
@@ -247,4 +248,40 @@ public class NearByList extends BaseFragment implements View.OnClickListener, Ap
             });
         }
     }
+    public void callAddNotifyCountApi(String orderId,String userId) {
+        if (!utilities.isNetworkAvailable())
+            utilities.dialogOK(context, "", context.getResources().getString(R.string.network_error), context.getString(R.string.ok), false);
+        else {
+            Map<String, String> map = new HashMap<>();
+            map.put("user_id", userId);
+            map.put(PN_APP_TOKEN, APP_TOKEN);
+            map.put("order_id", orderId);
+
+            APIInterface apiInterface = APIClient.getClient();
+            Call<OtherDTO> call = apiInterface.callAddNotifyCount(map);
+            call.enqueue(new Callback<OtherDTO>() {
+                @Override
+                public void onResponse(Call<OtherDTO> call, Response<OtherDTO> response) {
+                    if (response.isSuccessful()) {
+                        try {
+                            if (response.body().getResult().equalsIgnoreCase("success")) {
+                            } else {
+                                utilities.dialogOK(context, "", response.body().getMessage(), context.getString(R.string.ok), false);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<OtherDTO> call, Throwable t) {
+                    utilities.dialogOK(context, "", context.getResources().getString(R.string.server_error), context.getResources().getString(R.string.ok), false);
+                    Log.e(TAG, t.toString());
+                }
+            });
+        }
+    }
+
+
 }

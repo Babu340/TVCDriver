@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">TVC Driver</string>
+    <string name="app_name">TruckVanCarGo Driver</string>
     <!--Error-->
+
     <string name="congratulation">Congratulations</string>
     <string name="server_error">Can not connect to server! Please try again.</string>
     <string name="network_error">No internet connection, please connect your phone to wifi or data connection.</string>
@@ -91,6 +92,7 @@
     <string name="please_enter_vehicle_reg_number">Please enter vehicle registration number.</string>
     <string name="please_enter_dot_number">Please enter DOT number.</string>
     <string name="please_enter_social_security_number">Please enter social security number.</string>
+<!--    <string name="please_enter_vehicle_number">Please enter vehicle number.</string>-->
     <string name="please_upload_profile">Please upload profile.</string>
     <string name="please_upload_insurance">Please upload Insuranc.</string>
     <string name="please_upload_license">Please upload License.</string>
@@ -122,7 +124,7 @@
     <string name="setting">Setting</string>
     <string name="notification">Notifications</string>
     <string name="logout">Logout</string>
-    <string name="delivery_history">Delivery history</string>
+    <string name="delivery_history">Completed orders</string>
 
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -302,7 +304,7 @@
     <string name="driver_name">Driver Name</string>
     <string name="delivery_price">Delivery Price</string>
     <string name="driver_number">Driver Number</string>
-    <string name="ddelivery_type">Driver Type</string>
+    <string name="ddelivery_type">Delivery Type</string>
     <string name="amonunt_txt">Amount</string>
     <string name="time_duration_txt">2 h 00m</string>
     <string name="price">Price</string>
@@ -342,4 +344,5 @@
     <string name="not_available">This delivery option is not available at this time.</string>
 
     <string name="google_maps_key">AIzaSyC7NOJ5VbOZ2uzheASfYPZVPMniO0QAcys</string>
+    <string name="please_enter_comment">Please enter comments</string>
 </resources>

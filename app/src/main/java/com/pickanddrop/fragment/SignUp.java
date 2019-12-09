@@ -16,6 +16,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -41,7 +43,8 @@ import com.pickanddrop.utils.AppSession;
 import com.pickanddrop.utils.CustomSpinnerForAll;
 import com.pickanddrop.utils.OnDialogConfirmListener;
 import com.pickanddrop.utils.PermissionUtil;
-import com.pickanddrop.utils.SpinnerAdapter;
+import com.pickanddrop.utils.SpinnerDownWindow;
+import com.pickanddrop.utils.SpinnerDownWindow_interface;
 import com.pickanddrop.utils.Utilities;
 import com.squareup.picasso.Picasso;
 
@@ -59,16 +62,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SignUp extends BaseFragment implements AppConstants, View.OnClickListener {
+public class SignUp extends BaseFragment implements AppConstants, View.OnClickListener, SpinnerDownWindow_interface {
 
     private Context context;
     private AppSession appSession;
     private Utilities utilities;
     private SignUpBinding signUpBinding;
     private String countryCode = "", notiificationId = "", vehicleType = "", companyName = "", gstNumber = "", gst = "", imagePath = "", email = "", firstName = "", dob = "", lastName = "",
-            mobile = "", landline = "", password = "", confirmPassword = "", abn = "", vehicleNumber = "",
+            mobile = "", landline = "", password = "", confirmPassword = "", abn = "",
             vehicleResg = "", house = "", unit = "", streetName = "", streetNumber = "",
-            city = "", state = "", country = "", postCode = "",lisencePath = "",insurancePath = "",dotNumber = "",socialSecurityNo = "";
+            city = "", state = "", country = "", postCode = "",lisencePath = "",insurancePath = "",dotNumber = "",socialSecurityNo = "",vehiclenumber = "";
     private final int PERMISSIONS_REQUEST_READ_CONTACTS = 1234;
     String[] PERMISSIONS = {Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private MultipartBody.Part profileImage = null,lisenceImage = null,insuranceImage = null;
@@ -112,6 +115,7 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
 //        signUpBinding.ccp.enablePhoneAutoFormatter(true);
 //        signUpBinding.ccp.hideNameCode(true);
         signUpBinding.ccp.setDefaultCountryUsingNameCode("US");
+        signUpBinding.etVehicleNumber.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
         signUpBinding.etMobile.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -129,9 +133,7 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
                     signUpBinding.llMobileNumberError.setVisibility(View.VISIBLE);
 //                    Toast.makeText(getContext(), "number " + signUpBinding.ccp.getFullNumber() + " not valid!!!", Toast.LENGTH_LONG).show();
                 }
-
             }
-
             @Override
             public void afterTextChanged(Editable s) {
 
@@ -165,7 +167,7 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
 //            signUpBinding.etDob.setVisibility(View.VISIBLE);
 //            signUpBinding.etGstNo.setVisibility(View.VISIBLE);
 //            signUpBinding.llGst.setVisibility(View.VISIBLE);
-            ArrayList<String> listAll = new ArrayList<String>();
+            final ArrayList<String> listAll = new ArrayList<String>();
             HashMap<String, String> hashMap1 = new HashMap<>();
             hashMap1.put(PN_NAME, "");
             hashMap1.put(PN_VALUE, getResources().getString(R.string.vehicle_type));
@@ -193,16 +195,19 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
             vehicleList.add(hashMap1);
             listAll.add(getResources().getString(R.string.truck));
 
-            SpinnerAdapter adapter = new SpinnerAdapter(context, R.layout.spinner_text);
+//            SpinnerAdapter adapter = new SpinnerAdapter(context, R.layout.spinner_text);
+//            adapter.setDropDownViewResource(R.layout.spinner_item_list);
+//            adapter.addAll(listAll);
+//            adapter.add("This is Hint");
+
+            ArrayAdapter adapter = new ArrayAdapter<String>(context, R.layout.spinner_text);
             adapter.setDropDownViewResource(R.layout.spinner_item_list);
             adapter.addAll(listAll);
-
-//            ArrayAdapter adapter = new ArrayAdapter<String>(context, R.layout.spinner_text, listAll);
-//            adapter.setDropDownViewResource(R.layout.spinner_item_list);
             signUpBinding.spType.setAdapter(adapter);
-            signUpBinding.spType.setSelection(adapter.getCount());
 
+//            signUpBinding.spType.setSelection(adapter.getCount());
 //
+
 //            customSpinnerAdapter = new CustomSpinnerForAll(context, R.layout.spinner_textview, vehicleList, getResources().getColor(R.color.black_color), getResources().getColor(R.color.light_black), getResources().getColor(R.color.transparent));
 //            signUpBinding.spType.setAdapter(customSpinnerAdapter);
 
@@ -221,6 +226,13 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
 
                 }
             });
+
+//            ArrayList<String> dataArray = new ArrayList<String>();
+
+//            dataArray =  {"1 Second","2 Seconds","3 Seconds","4 Seconds","5 Seconds","6 Seconds","7 Seconds","8 Seconds","9 Seconds","10 Seconds"};
+
+//            Button show_spinner = (Button) findViewById(R.id.show_spinner);
+
         }
     }
 
@@ -229,7 +241,6 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
         switch (view.getId()) {
             case R.id.btn_signup:
                 Utilities.hideKeyboard(signUpBinding.btnSignup);
-
                 countryCode = signUpBinding.ccp.getSelectedCountryCode();
                 Log.e(TAG, ">>>>>>>>>>>>>>"+countryCode);
 //                companyName = signUpBinding.etCompany.getText().toString();
@@ -241,6 +252,7 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
                 mobile = signUpBinding.etMobile.getText().toString();
                 dotNumber = signUpBinding.etDotNumber.getText().toString();
                 socialSecurityNo = signUpBinding.etSocialSecurityNumber.getText().toString();
+                vehiclenumber = signUpBinding.etVehicleNumber.getText().toString();
 
 //                landline = signUpBinding.etLandline.getText().toString();
 //                unit = signUpBinding.etUnit.getText().toString();
@@ -409,6 +421,9 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
             return false;
         }else if (socialSecurityNo == null || socialSecurityNo.equals("")) {
             utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_social_security_number), getString(R.string.ok), false);
+            return false;
+        } else if (vehiclenumber == null || vehiclenumber.equals("")) {
+            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_vehicle_number), getString(R.string.ok), false);
             return false;
         }
 //        else if (profileImage == null ) {
@@ -741,6 +756,7 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
             partMap.put("vehicle_type", RequestBody.create(MediaType.parse("vehicle_type"), vehicleType));
             partMap.put("type_of_truck", RequestBody.create(MediaType.parse("type_of_truck"), vehicleType));
             partMap.put("social_security_number", RequestBody.create(MediaType.parse("social_security_number"), socialSecurityNo));
+            partMap.put("vehicle_number", RequestBody.create(MediaType.parse("vehicle_number"), vehiclenumber));
 
 //            partMap.put("vehicle_type", RequestBody.create(MediaType.parse("vehicle_type"), vehicleType));
             partMap.put("device_token", RequestBody.create(MediaType.parse("device_token"), notiificationId));
@@ -812,6 +828,11 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
                 }
             });
         }
+    }
+
+    @Override
+    public void selectedPosition(int selected_position) {
+
     }
 }
 

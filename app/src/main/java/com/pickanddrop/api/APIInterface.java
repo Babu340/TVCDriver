@@ -28,27 +28,26 @@ public interface APIInterface {
 //    @POST("login")
 //    Call<LoginDTO> callLoginApi(@FieldMap Map<String, String> map);
 
-    @POST("driverlogin")
+    @POST("ApiController/driverlogin")
     Call<LoginDTO> callLoginApi(@Body LoginModel loginModel);
-
 
 //    @FormUrlEncoded
 //    @POST("forgetPassword")
 //    Call<OtherDTO> callForgotApi(@FieldMap Map<String, String> map);
 
-    @POST("forgetPassword")
+    @POST("ApiController/forgetPassword")
     Call<OtherDTO> callForgotApi(@Body ForgotPasswordModel forgotPasswordModel);
 
     @FormUrlEncoded
-    @POST("create_order")
+    @POST("ApiController/create_order")
     Call<OtherDTO> callCreateOrderApi(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
-    @POST("rescheduleOrder")
+    @POST("ApiController/rescheduleOrder")
     Call<OtherDTO> callRescheduleOrderApi(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
-    @POST("cancelDelivery")
+    @POST("ApiController/cancelDelivery")
     Call<OtherDTO> callCancelOrderApi(@FieldMap Map<String, String> map);
 
 
@@ -56,7 +55,7 @@ public interface APIInterface {
 //    @POST("changePassword")
 //    Call<OtherDTO> callChangePassword(@FieldMap Map<String, String> map);
 
-    @POST("changePassword")
+    @POST("ApiController/changePassword")
     Call<OtherDTO> callChangePassword(@Body ChangePasswordModel changePasswordModel);
 
 //    @Multipart
@@ -66,83 +65,88 @@ public interface APIInterface {
 //            @Part MultipartBody.Part profileImage);
 
     @Multipart
-    @POST("driverRegistration")
+    @POST("ApiController/driverRegistration")
     Call<OtherDTO> callSignUpApi(
             @PartMap() Map<String, RequestBody> partMap,
             @Part MultipartBody.Part profileImage, @Part MultipartBody.Part lisenceImage,
             @Part MultipartBody.Part insuranceImage);
 
     @Multipart
-    @POST("editProfile")
+    @POST("ApiController/editProfile")
     Call<LoginDTO> callEditProfileApi(
             @PartMap() Map<String, RequestBody> partMap,
             @Part MultipartBody.Part profileImage);
 
     @FormUrlEncoded
-    @POST("deliveryDetail")
+    @POST("ApiController/deliveryDetail")
     Call<DeliveryDTO> callDeliveryDetailsApi(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
-    @POST("get_user_deliveries")
+    @POST("ApiController/get_user_deliveries")
     Call<DeliveryDTO>callUserCurrentDeliveryApi(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
-    @POST("customerOrderHistory")
+    @POST("ApiController/customerOrderHistory")
     Call<DeliveryDTO> callUserHistoryDeliveryApi(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
-    @POST("driverOrderHistory")
+    @POST("ApiController/driverOrderHistory")
     Call<DeliveryDTO> callDriverHistoryDeliveryApi(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
-    @POST("get_driver_deliveries")
+    @POST("ApiController/get_driver_deliveries")
     Call<DeliveryDTO> callDriverCurrentDeliveryApi(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
-    @POST("notifications")
+    @POST("ApiController/notifications")
     Call<DeliveryDTO> callNotificationListApi(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
-    @POST("getNearByDeliveryBoys")
+    @POST("ApiController/getNearByDeliveryBoys")
     Call<LocationDTO> getNearDriver(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
-    @POST("getNearByDeliveries")
+    @POST("ApiController/getNearByDeliveries")
     Call<DeliveryDTO> callNearDeliveriesForDriverApi(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
-    @POST("acceptDeliveryRequest")
+    @POST("ApiController/acceptDeliveryRequest")
     Call<OtherDTO> callAcceptDeliveriesForDriverApi(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
-    @POST("pickupdelivery")
+    @POST("ApiController/pickupdelivery")
     Call<OtherDTO> callPickupDeliveriesForDriverApi(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
-    @POST("changeReportproblemstatus")
+    @POST("ApiController/changeReportproblemstatus")
     Call<OtherDTO> callReOrderApi(@FieldMap Map<String, String> map);
 
     @Multipart
-    @POST("deliverOrder")
+    @POST("ApiController/deliverOrder")
     Call<LoginDTO> callDeliverOrderApi(
             @PartMap() Map<String, RequestBody> partMap,
             @Part MultipartBody.Part signatureImage,
             @Part MultipartBody.Part itemImage);
 
     @FormUrlEncoded
-    @POST("getSettings")
+    @POST("ApiController/getSettings")
     Call<OtherDTO> getSettingForPrice(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
-    @POST("reportProblem")
+    @POST("ApiController/reportProblem")
     Call<OtherDTO> callReportProblemApi(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
-    @POST("review")
+    @POST("ApiController/review")
     Call<OtherDTO> callReviewApi(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
-    @POST("logout")
+    @POST("ApiController/logout")
     Call<OtherDTO> callLogoutApi(@FieldMap Map<String, String> map);
+
+    @FormUrlEncoded
+    @POST("ApiController/addNotifyCount")
+    Call<OtherDTO> callAddNotifyCount(@FieldMap Map<String, String> map);
+
 }
 

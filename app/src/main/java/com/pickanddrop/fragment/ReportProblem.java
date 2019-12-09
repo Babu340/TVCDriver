@@ -122,36 +122,36 @@ public class ReportProblem extends BaseFragment implements View.OnClickListener,
                 if (i != 0) {
                     problem = problemList.get(i).get(PN_VALUE);
 
-                    if (problem.equalsIgnoreCase(getString(R.string.custom))) {
-                        final Dialog dialog = new Dialog(context);
-                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                        dialog.getWindow().setLayout(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
-                        dialog.setCanceledOnTouchOutside(false);
-                        dialog.setCancelable(false);
-                        dialog.setContentView(R.layout.dialog_problem);
-                        final EditText etProblem = (EditText) dialog.findViewById(R.id.et_problems);
-                        Button btnOk = (Button) dialog.findViewById(R.id.btn_ok);
+//                    if (problem.equalsIgnoreCase(getString(R.string.custom))) {
+//                        final Dialog dialog = new Dialog(context);
+//                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                        dialog.getWindow().setLayout(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+//                        dialog.setCanceledOnTouchOutside(false);
+//                        dialog.setCancelable(false);
+//                        dialog.setContentView(R.layout.dialog_problem);
+//                        final EditText etProblem = (EditText) dialog.findViewById(R.id.et_problems);
+//                        Button btnOk = (Button) dialog.findViewById(R.id.btn_ok);
+//
+//                        btnOk.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                String customProblem = etProblem.getText().toString().trim();
+//                                if(!customProblem.equals("")){
+//                                    reportProblemBinding.etComments.setText(customProblem);
+//
+//                                    dialog.dismiss();
+//                                }else {
+//                                    utilities.dialogOK(context, "", getString(R.string.please_give_custome_reason), getString(R.string.ok), false);
+//                                }
+//
+//                            }
+//                        });
+//
+//                        dialog.show();
+//                    }else {
 
-                        btnOk.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                String customProblem = etProblem.getText().toString().trim();
-                                if(!customProblem.equals("")){
-                                    reportProblemBinding.etComments.setText(customProblem);
-
-                                    dialog.dismiss();
-                                }else {
-                                    utilities.dialogOK(context, "", getString(R.string.please_give_custome_reason), getString(R.string.ok), false);
-                                }
-
-                            }
-                        });
-
-                        dialog.show();
-                    } else {
-
-                    }
+//                    }
                 } else {
                     problem = "";
                 }
@@ -188,6 +188,9 @@ public class ReportProblem extends BaseFragment implements View.OnClickListener,
 //        } else
         if (problem == null || problem.equals("")) {
             utilities.dialogOK(context, "", getString(R.string.please_select_reason), getString(R.string.ok), false);
+            return false;
+        }else if(comments == null || comments.equals("")) {
+            utilities.dialogOK(context, "",getResources().getString(R.string.please_enter_comment), getString(R.string.ok), false);
             return false;
         }
         return true;

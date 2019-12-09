@@ -180,6 +180,7 @@
         app:layout_constraintBottom_toTopOf="@id/ll_bottom"/>
 
     <ImageView
+        android:visibility="gone"
         android:id="@+id/iv_current_loc"
         android:layout_width="30dp"
         android:layout_height="30dp"

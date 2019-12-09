@@ -207,7 +207,12 @@ public class CurrentList extends BaseFragment implements View.OnClickListener, A
                                 rvListBinding.rvDeliveries.setVisibility(View.GONE);
                                 rvListBinding.tvNoRecord.setVisibility(View.VISIBLE);
 
-                                rvListBinding.tvNoRecord.setText(response.body().getMessage());
+                                if(status.equals(getString(R.string.notification)))
+                                    rvListBinding.tvNoRecord.setText("No notification !");
+                                else if(status.equals(getString(R.string.notification)))
+                                    rvListBinding.tvNoRecord.setText("No delivery history !");
+                                else
+                                    rvListBinding.tvNoRecord.setText("No orders !");
 //                                utilities.dialogOK(context, "", response.body().getMessage(), context.getString(R.string.ok), false);
                             }
                         } catch (Exception e) {

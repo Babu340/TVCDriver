@@ -14,6 +14,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +34,7 @@ import com.pickanddrop.dto.LoginDTO;
 import com.pickanddrop.model.LoginModel;
 import com.pickanddrop.utils.AppConstants;
 import com.pickanddrop.utils.AppSession;
+import com.pickanddrop.utils.DrawableClickListener;
 import com.pickanddrop.utils.PermissionUtil;
 import com.pickanddrop.utils.Utilities;
 
@@ -54,6 +57,8 @@ public class Login extends BaseFragment implements AppConstants, View.OnClickLis
     String[] PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
     LoginModel loginModel = new LoginModel();
+
+    String password_status = "show";
 
     @Nullable
     @Override
@@ -88,6 +93,32 @@ public class Login extends BaseFragment implements AppConstants, View.OnClickLis
         if (!hasPermissions(context, PERMISSIONS)) {
             ActivityCompat.requestPermissions(((SplashActivity) context), PERMISSIONS, PERMISSIONS_REQUEST_READ_CONTACTS);
         }
+
+        logInBinding.etPassword.setDrawableClickListener(new DrawableClickListener() {
+            @Override
+            public void onClick(DrawablePosition target) {
+                if (target == DrawablePosition.RIGHT) {//Do something here
+                    if (password_status.equals("show")) {
+                        password_status = "hide";
+
+
+//                        logInBinding.etPassword.setInputType(InputType.TYPE_CLASS_TEXT);
+                        logInBinding.etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                        logInBinding.etPassword.setSelection(logInBinding.etPassword.getText().length());
+//                        logInBinding.etPassword.setTypeface(Typeface.create("titillium_regular", Typeface.NORMAL));
+                        logInBinding.etPassword.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_off_black_24dp, 0);
+                    } else if (password_status.equals("hide")) {
+                        password_status = "show";
+//                        logInBinding.etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                        logInBinding.etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                        logInBinding.etPassword.setSelection(logInBinding.etPassword.getText().length());
+//                        logInBinding.etPassword.setTypeface(Typeface.create("titillium_regular",Typeface.NORMAL));
+                        logInBinding.etPassword.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic__eye_black_24dp, 0);
+                    }
+                }
+            }
+        });
+
 
     }
 

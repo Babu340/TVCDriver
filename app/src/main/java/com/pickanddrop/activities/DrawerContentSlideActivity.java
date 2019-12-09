@@ -16,6 +16,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.location.LocationListener;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -55,6 +56,7 @@ import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStates;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.pickanddrop.BuildConfig;
 import com.pickanddrop.R;
 import com.pickanddrop.adapter.MenuAdapter;
 import com.pickanddrop.api.APIClient;
@@ -91,7 +93,7 @@ public class DrawerContentSlideActivity extends AppCompatActivity implements App
     private DrawerLayout drawerLayout;
     private LinearLayout content;
     private ActionBarDrawerToggle actionBarDrawerToggle;
-    private TextView mTitle, tvName;
+    private TextView mTitle, tvName,tvVersion;
     private Toolbar toolbar;
     private DrawerLayoutBinding drawerLayoutBinding;
     private LinearLayoutManager linearLayoutManager;
@@ -263,12 +265,19 @@ public class DrawerContentSlideActivity extends AppCompatActivity implements App
         mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
         tvName = (TextView) findViewById(R.id.tv_name);
         ivProfile = (ImageViewCircular) findViewById(R.id.iv_profile);
+        tvVersion = (TextView) findViewById(R.id.tv_version);
 
         setSupportActionBar(toolbar);
         drawerLayout.setScrimColor(Color.TRANSPARENT);
         menuList = new ArrayList<>();
         linearLayoutManager = new LinearLayoutManager(this);
         drawerLayoutBinding.rvMenu.setLayoutManager(linearLayoutManager);
+        try {
+            String versionName = BuildConfig.VERSION_NAME;
+            tvVersion.setText("Version : " + versionName);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         getSupportActionBar().hide();
 
@@ -333,6 +342,8 @@ public class DrawerContentSlideActivity extends AppCompatActivity implements App
                 .replace(containerViewId, fragment, fragmentTag)
                 .commitAllowingStateLoss();
     }
+
+
 
     OnItemClickListener.OnItemClickCallback onItemClickCallback = new OnItemClickListener.OnItemClickCallback() {
         @Override
@@ -415,6 +426,7 @@ public class DrawerContentSlideActivity extends AppCompatActivity implements App
                 0, text.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
         mTitle.setText(text.toString());
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
+
 //        if (toolbarDrawable == null) {
 //            toolbarDrawable = toolbar.getNavigationIcon();
 //        }

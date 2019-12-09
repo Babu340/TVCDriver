@@ -43,7 +43,9 @@ public interface AppConstants {
 
 
     String ENGLISH = "en";
-    String BASE_URL= "http://18.218.152.94/index.php/ApiController/";
+    String BASE_URL= "http://18.218.152.94/index.php/";
+//    String BASE_URL= "http://18.218.152.94/index.php/ApiController/"
+//      String BASE_URL= "http://192.168.1.51/pickanddeliver/index.php/";
 //    String BASE_URL = "http://18.221.13.149/pickanddeliver/admin/index.php/ApiController/";
     String IMAGE_URL = "http://18.218.152.94/image/";
 //    String IMAGE_URL = "http://18.221.13.149/pickanddeliver/admin/image/";

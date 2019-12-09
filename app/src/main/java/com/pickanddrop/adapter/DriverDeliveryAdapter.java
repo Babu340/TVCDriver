@@ -159,14 +159,21 @@ public class DriverDeliveryAdapter extends RecyclerView.Adapter<DriverDeliveryAd
 
         if (deliveryDTOArrayList.get(position).getDeliveryType() != null) {
             if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("express")) {
-                viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.two_hours));
-            } else if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("single")) {
-                viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.four_hours));
-            } else {
                 viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.same_hours));
+            } else if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("single")) {
+                viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.two_hours));
+            } else {
+                viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.four_hours));
             }
         } else {
-            viewHolder.viewHours.setVisibility(View.GONE);
+            if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("express")) {
+                viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.same_hours));
+            } else if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("single")) {
+                viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.two_hours));
+            } else {
+                viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.four_hours));
+            }
+//            viewHolder.viewHours.setVisibility(View.GONE);
         }
 
 
